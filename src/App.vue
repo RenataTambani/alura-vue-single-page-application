@@ -3,6 +3,8 @@
 <template>
   <div id="app" class="corpo">
    <h1 class="centralizado">{{ titulo }}</h1>
+   <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="Filtre por parte do título">
+   {{ filtro }}
     <ul class="lista-fotos">
       <li v-for="foto in fotos" :key="foto.id" class="lista-fotos-item"> 
         <meu-painel :titulo="foto.titulo">
@@ -23,8 +25,9 @@ export default {
   },
   data() { 
     return {
-    titulo: 'Alurapic',  
-     fotos: [ ]
+      titulo: 'Alurapic',  
+      fotos: [ ],
+      filtro: "",
     
      
     }
@@ -57,5 +60,8 @@ export default {
   .lista-fotos .lista-fotos-item {
     display: inline-block;
   }
-
+  .filtro {
+    display: block;
+    width: 100%;
+  }
 </style>
